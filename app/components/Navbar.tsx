@@ -1,7 +1,7 @@
 "use client";
 
 import { ForwardIcon } from "@heroicons/react/24/solid";
-import { Button, Link } from "react-aria-components";
+import { Button, DialogTrigger, Link } from "react-aria-components";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { signOut, useSession } from "next-auth/react";
 import Modals from "./modals";
@@ -20,21 +20,23 @@ const Navbar = () => {
       );
     } else {
       return (
-        <div className="flex items-center flex-row gap-4">
-          <Button className="bg-light-accent dark:bg-dark-accent text-dark-primary dark:text-light-primary px-4 py-2 rounded-md font-medium text-sm">
-            Get Started
-          </Button>
-          <Button className="bg-light-primary dark:bg-dark-primary text-dark-primary dark:text-light-primary px-4 py-2 rounded-md font-medium text-sm">
-            Login
-          </Button>
-          <Modals />
-        </div>
+        <DialogTrigger>
+          <div className="flex items-center flex-row gap-4">
+            <Button className="bg-light-accent dark:bg-dark-accent text-dark-primary dark:text-light-primary px-4 py-2 rounded-md font-medium text-sm">
+              Get Started
+            </Button>
+            <Button className="bg-light-primary dark:bg-dark-primary text-dark-primary dark:text-light-primary px-4 py-2 rounded-md font-medium text-sm">
+              Login
+            </Button>
+            <Modals />
+          </div>
+        </DialogTrigger>
       );
     }
   };
 
   return (
-    <div className="sticky top-0 p-4 border-b border-light-primary dark:border-dark-primary/80 flex flex-row justify-between items-center shadow-sm">
+    <div className="container sticky top-0 p-4 border-b border-light-primary dark:border-dark-primary/20 flex flex-row justify-between items-center shadow-sm">
       <Link
         href="/"
         className="flex gap-1 bg-light-accent dark:bg-dark-accent rounded-md p-2"
