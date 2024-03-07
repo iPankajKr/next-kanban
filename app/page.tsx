@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Modals from "./components/modals";
+import Modals from "./components/modals/ModalWrapper";
 import {
   Button,
   DialogTrigger,

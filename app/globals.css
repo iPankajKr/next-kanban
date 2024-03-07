@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-light-secondary dark:bg-dark-secondary
+    @apply bg-light-background dark:bg-dark-background text-light-primary dark:text-dark-primary
   }
 }
 

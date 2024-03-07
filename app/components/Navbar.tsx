@@ -4,7 +4,9 @@ import { ForwardIcon } from "@heroicons/react/24/solid";
 import { Button, DialogTrigger, Link } from "react-aria-components";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { signOut, useSession } from "next-auth/react";
-import Modals from "./modals";
+import Modals from "./modals/ModalWrapper";
+import LoginModal from "./modals/LoginModal";
+import SignupModal from "./modals/SignupModal";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -20,26 +22,31 @@ const Navbar = () => {
       );
     } else {
       return (
-        <DialogTrigger>
+        <>
           <div className="flex items-center flex-row gap-4">
-            <Button className="bg-light-accent dark:bg-dark-accent text-dark-primary dark:text-light-primary px-4 py-2 rounded-md font-medium text-sm">
-              Get Started
-            </Button>
-            <Button className="bg-light-primary dark:bg-dark-primary text-dark-primary dark:text-light-primary px-4 py-2 rounded-md font-medium text-sm">
-              Login
-            </Button>
-            <Modals />
+            <DialogTrigger>
+              <Button className="bg-light-accent dark:bg-dark-accent text-light-primary px-4 py-2 rounded-md font-medium text-sm">
+                Get Started
+              </Button>
+              <SignupModal />
+            </DialogTrigger>
+            <DialogTrigger>
+              <Button className="bg-light-secondary dark:bg-dark-secondary text-light-primary dark:text-dark-primary px-4 py-2 rounded-md font-medium text-sm">
+                Login
+              </Button>
+              <LoginModal />
+            </DialogTrigger>
           </div>
-        </DialogTrigger>
+        </>
       );
     }
   };
 
   return (
-    <div className="container sticky top-0 p-4 border-b border-light-primary dark:border-dark-primary/20 flex flex-row justify-between items-center shadow-sm">
+    <div className="container sticky top-0 p-4 border-b border-light-primary/20 dark:border-dark-primary/20 flex flex-row justify-between items-center shadow-sm">
       <Link
         href="/"
-        className="flex gap-1 bg-light-accent dark:bg-dark-accent rounded-md p-2"
+        className="flex gap-1 rounded-md p-2"
       >
         <ForwardIcon className="h-6 w-6" />
         <span className="font-bold">NextKanban</span>

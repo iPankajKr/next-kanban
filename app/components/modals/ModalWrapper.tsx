@@ -1,17 +1,13 @@
 "use client";
 
 import {
-  Button,
   Dialog,
-  DialogTrigger,
-  Heading,
   Modal,
   ModalOverlay,
 } from "react-aria-components";
 
-const ModalWrapper = () => {
+const ModalWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-
     <ModalOverlay
       className={({ isEntering, isExiting }) => `
           fixed inset-0 z-10 overflow-y-auto bg-dark-primary/25 flex min-h-full items-center justify-center p-4 text-center backdrop-blur
@@ -28,9 +24,9 @@ const ModalWrapper = () => {
           `}
       >
         <Dialog>
-          <Heading slot="title">Notice</Heading>
-          <p>Click outside to close this dialog.</p>
+          {children}
         </Dialog>
+
       </Modal>
     </ModalOverlay>
   );
