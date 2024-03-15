@@ -1,13 +1,14 @@
+"use client";
+
 import { ForwardIcon } from "@heroicons/react/24/solid";
 import { Button, DialogTrigger, Link } from "react-aria-components";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { signOut, useSession } from "next-auth/react";
 import LoginModal from "./modals/LoginModal";
 import SignupModal from "./modals/SignupModal";
-import { getServerSession } from "next-auth";
 
 const Navbar = () => {
-  const { session } = getServerSession();
+  const { data: session } = useSession();
 
   const LoginSignupBtns = () => {
     if (session) {
